@@ -25,3 +25,11 @@ df_train = df_groups.get_group('train')
 df_test = pd.concat([df_groups.get_group('dev'), df_groups.get_group('test')])
 print('train :', len(df_train))  # train : 17104
 print('test :', len(df_test))    # test : 1133
+
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, BertJapaneseTokenizer, MecabTokenizer
+
+# 使用するモデルを指定して、トークナイザとモデルを読み込む
+checkpoint = 'cl-tohoku/bert-base-japanese-whole-word-masking'
+checkpoint2 = "cl-tohoku/bert-base-japanese-v3"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint2)
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=8)
