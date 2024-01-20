@@ -1,4 +1,5 @@
 # bertかclipで感情分類
+https://qiita.com/izaki_shin/items/2b4573ee7fbea5ec8ed6
 
 ## モチベーション
 何となくやりたくなったから。あとbertの勉強。
