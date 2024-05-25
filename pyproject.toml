@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "bert-sentimental-classification"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+license = "MIT"
+description = "Sentimental classification using BERT"
+authors = ["0num4 <r.oonuma@matsuri-tech.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
