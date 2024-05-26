@@ -1,0 +1,37 @@
+name: "test"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: pyproject.toml
+      - run: echo 'cache hit ${{ steps.setup-python.outputs.cache-hit }}'
+        shell: bash
+      - name: print python version
+        run: python --version
+      - name: Install dependencies
+        run: poetry install --with dev
+      # TODO: 本当は別のjobに分けたい
+      - name: ruff check .
+        run: poetry run ruff check .
+      # - name: mypy
+      #   run: mypy .
+      - name: test
+        run: poetry run pytest
